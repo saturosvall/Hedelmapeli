@@ -20,6 +20,7 @@ function spin() {
     return;
   }
 
+
   const reels = document.querySelectorAll('.reel');
 
   // Panoksen vähennys saldosta
@@ -36,7 +37,7 @@ function spin() {
 
   // Kierroslaskuri lukitusehdon takia
   currentRound++;
-  lockedRound = 0;
+  //lockedRound = 0;
   
   
   
@@ -58,30 +59,33 @@ function spin() {
 
 // Rullien lukitus
 function toggleLock(reelIndex) {
-  lockedRound++;
   const lockButton = document.getElementById(`lock${reelIndex}`);
   const reel = document.getElementById(`reel${reelIndex}`);
+  currentRound += 2;
 
-  //if (currentRound % 2 === 0 || lockedRound === 0) {
+  if (currentRound % 2 === 0 || lockedRound === 0) {
+
     if (!lockedReels[reelIndex - 1]) {
       lockedReels[reelIndex - 1] = true;
+      lockedRound++;
       lockButton.disabled = true;
       lockButton.textContent = 'Lukittu';
       reel.classList.add('locked');
       
-    } else {
-      alert('Pyöräytä välillä!');
-    }
-  } /*else {
+  } else {
+    alert('Pyöräytä välillä!');
+  }
+  } else {
     alert('Pittää pyöräyttää välillä!');
-  }*/
-//}
+  }
+}
 
 function resetLockButtons() {
   for (let i = 1; i <= 4; i++) {
     const lockButton = document.getElementById(`lock${i}`);
     lockButton.disabled = false;
     lockButton.textContent = `Lukitse ${i}`;
+    lockedRound = 1;
   }
 }
 
