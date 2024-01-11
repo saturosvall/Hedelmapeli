@@ -93,7 +93,7 @@ function getRandomSymbol() {
 
 // Voittotuloksen laskeminen
 function calculateWin(reels, bet) {
-  // Tarkista onko kaikissa rullissa sama symboli
+  // Tarkista onko KAIKISSA rullissa sama symboli
   /*const firstSymbol = reels[0].textContent;
   
   if (Array.from(reels).every((reel) => reel.textContent === firstSymbol)) {
