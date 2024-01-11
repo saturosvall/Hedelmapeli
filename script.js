@@ -93,8 +93,10 @@ function getRandomSymbol() {
 
 // Voittotuloksen laskeminen
 function calculateWin(reels, bet) {
-  // Tarkista onko KAIKISSA rullissa sama symboli
-  /*const firstSymbol = reels[0].textContent;
+  // Tarkista onko kaikissa rullissa sama symboli
+  const firstSymbol = reels[0].textContent;
+    const specificSymbol = '🌈'; // Megapotti
+
   
   if (Array.from(reels).every((reel) => reel.textContent === firstSymbol)) {
     // Laske voitot symbolin perusteella
@@ -112,21 +114,20 @@ function calculateWin(reels, bet) {
       default:
         return 0;
     }    
-  } else {*/
-    // Tarkistetaan onko megapotti 3 x rullissa
-    const specificSymbol = '🌈'; // Megapotti
-    if (isObjectInReels(specificSymbol, Array.from(reels), 2)) {
-      switch (specificSymbol) {
-        case '🌈':
-          return bet * 20; 
-        default:
-          return 0;
-      }
-    } else {
-      return 0;
+  // Tarkistetaan onko megapotti 3 x rullissa
+
+  } else if (isObjectInReels(specificSymbol, Array.from(reels), 3)) {
+    switch (specificSymbol) {
+      case '🌈':
+        return bet * 20; 
+      default:
+        return 0;
     }
+  } else {
+    return 0;
   }
-//}
+}
+
 // Tarkastetaan onko megapotti kolmessa tietyssä määrässä rullia
 function isObjectInReels(object, reels, count) {
   const objectCount = reels.filter(reel => reel === object).length;
