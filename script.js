@@ -116,23 +116,18 @@ function calculateWin(reels, bet) {
     }    
   // Tarkistetaan onko megapotti 3 x rullissa
 
-  } else if (isObjectInReels(specificSymbol, Array.from(reels), 3)) {
+  } else if (Array.from(reels).filter((reel) => reel.textContent === specificSymbol).length === 3) {
+    // Laske voitot specificSymbolin perusteella, jos se esiintyy kolmessa rullassa
     switch (specificSymbol) {
       case '🌈':
-        return bet * 20; 
+        return bet * 5; 
       default:
         return 0;
     }
   } else {
-    return 0;
+    return 0; // ei voittoa
   }
-}
-
-// Tarkastetaan onko megapotti kolmessa tietyssä määrässä rullia
-function isObjectInReels(object, reels, count) {
-  const objectCount = reels.filter(reel => reel === object).length;
-  return objectCount >= count;
-}
+  }
 
 function updateBalance() {
   document.getElementById('balance').textContent = `Balance: ${balance} coins`;
