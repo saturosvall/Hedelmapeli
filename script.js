@@ -130,17 +130,17 @@ function calculateWin(reels, bet) {
   }
 
 function updateBalance() {
-  document.getElementById('balance').textContent = `Balance: ${balance} coins`;
+  document.getElementById('balance').textContent = `Saldo: ${balance}`;
 }
 
 function updateWinnings() {
-  document.getElementById('winnings').textContent = `Winnings: ${winnings} coins`;
+  document.getElementById('winnings').textContent = `Voitot: ${winnings}`;
 }
 
 function updateRounds() {
-  document.getElementById('rounds').textContent = `Rounds: ${currentRound} `;
+  document.getElementById('rounds').textContent = `Kierroslaskenta: ${currentRound} `;
 }
 
 function updateLockedrounds() {
-  document.getElementById('lockedrounds').textContent = `Locked rounds: ${lockedRound} `;
+  document.getElementById('lockedrounds').textContent = `Lukitut kierrokset: ${lockedRound} `;
 }
