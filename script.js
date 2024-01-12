@@ -14,7 +14,6 @@ function spin() {
     } else {
       currentRound++;
     }
-    //lockedRound = 0;
 
   // panoksen asetukset
   const bet = parseInt(document.getElementById('betInput').value, 10);
@@ -25,10 +24,9 @@ function spin() {
   }
 
   if (bet > balance) {
-    alert('Rahat ei riitä, aseta pienempi panos');
+    alert('Rahat ei riitä, aseta pienempi panos tai hanki lisää rahaa!');
     return;
   }
-
 
   const reels = document.querySelectorAll('.reel');
 
@@ -71,14 +69,14 @@ function toggleLock(reelIndex) {
       lockedReels[reelIndex - 1] = true;
       lockedRound++;
       lockButton.disabled = true;
-      lockButton.textContent = 'Lukittu';
+      lockButton.textContent = 'LUKITTU';
       reel.classList.add('locked');
       
     } else {
       alert('Pyöräytä välillä!');
     }
   } else {
-    alert('Pittää pyöräyttää välillä!');
+    alert('Pitää pyöräyttää välillä!');
   }
 }
 
@@ -86,7 +84,7 @@ function resetLockButtons() {
   for (let i = 1; i <= 4; i++) {
     const lockButton = document.getElementById(`lock${i}`);
     lockButton.disabled = false;
-    lockButton.textContent = `Lukitse ${i}`;
+    lockButton.textContent = `LUKITSE`;
     lockedRound = 0;
   }
 }
@@ -103,7 +101,6 @@ function calculateWin(reels, bet) {
   const firstSymbol = reels[0].textContent;
     const specificSymbol = '🌈'; // Megapotti
 
-  
   if (Array.from(reels).every((reel) => reel.textContent === firstSymbol)) {
     // Laske voitot symbolin perusteella
     switch (firstSymbol) {
@@ -120,10 +117,9 @@ function calculateWin(reels, bet) {
       default:
         return 0;
     }    
-  // Tarkistetaan onko megapotti 3 x rullissa
-
+  
+    // Tarkistetaan onko sateenkaari x 3 rullissa
   } else if (Array.from(reels).filter((reel) => reel.textContent === specificSymbol).length === 3) {
-    // Laske voitot specificSymbolin perusteella, jos se esiintyy kolmessa rullassa
     switch (specificSymbol) {
       case '🌈':
         return bet * 5; 
@@ -140,14 +136,13 @@ function updateBalance() {
 }
 
 function updateWinnings() {
-  document.getElementById('winnings').textContent = `Voitit pyöräytyksellä: ${winnings}`;
+  document.getElementById('winnings').textContent = `Voitit tällä pyöräytyksellä: ${winnings}`;
 }
-/* KOODAUKSEN APUNA
+
 function updateRounds() {
-  document.getElementById('rounds').textContent = `Kierroslaskenta: ${currentRound} `;
+  document.getElementById('rounds').textContent = ``;
 }
 
 function updateLockedrounds() {
-  document.getElementById('lockedrounds').textContent = `Lukitut kierrokset: ${lockedRound} `;
+  document.getElementById('lockedrounds').textContent = ``;
 }
-*/
