@@ -3,10 +3,19 @@ const logo = '🐾';
 let balance = 100; // Aloitusraha
 let lockedReels = [false, false, false, false]; // Aloitusrullan lukitustilanne
 let winnings = 0; // Voittojen seuranta
-let currentRound = 1;
+let currentRound = 0;
 let lockedRound = 0;
 
 function spin() {
+    // Kierroslaskuri lukitusehdon takia
+    currentRound = 0;
+    if (lockedRound === 0) {
+      currentRound += 2;
+    } else {
+      currentRound++;
+    }
+    //lockedRound = 0;
+
   // panoksen asetukset
   const bet = parseInt(document.getElementById('betInput').value, 10);
 
@@ -34,12 +43,6 @@ function spin() {
       reel.textContent = symbol;
     }
   });
-
-  // Kierroslaskuri lukitusehdon takia
-  currentRound++;
-  //lockedRound = 0;
-  
-  
   
   updateRounds();
 
@@ -61,9 +64,8 @@ function spin() {
 function toggleLock(reelIndex) {
   const lockButton = document.getElementById(`lock${reelIndex}`);
   const reel = document.getElementById(`reel${reelIndex}`);
-  currentRound += 2;
 
-  if (currentRound % 2 === 0 || lockedRound === 0) {
+  if (currentRound % 2 === 0) {
 
     if (!lockedReels[reelIndex - 1]) {
       lockedReels[reelIndex - 1] = true;
@@ -72,9 +74,9 @@ function toggleLock(reelIndex) {
       lockButton.textContent = 'Lukittu';
       reel.classList.add('locked');
       
-  } else {
-    alert('Pyöräytä välillä!');
-  }
+    } else {
+      alert('Pyöräytä välillä!');
+    }
   } else {
     alert('Pittää pyöräyttää välillä!');
   }
@@ -85,7 +87,7 @@ function resetLockButtons() {
     const lockButton = document.getElementById(`lock${i}`);
     lockButton.disabled = false;
     lockButton.textContent = `Lukitse ${i}`;
-    lockedRound = 1;
+    lockedRound = 0;
   }
 }
 
@@ -134,13 +136,13 @@ function calculateWin(reels, bet) {
   }
 
 function updateBalance() {
-  document.getElementById('balance').textContent = `Saldo: ${balance}`;
+  document.getElementById('balance').textContent = `SALDO: ${balance}`;
 }
 
 function updateWinnings() {
-  document.getElementById('winnings').textContent = `Voitot: ${winnings}`;
+  document.getElementById('winnings').textContent = `Voitit pyöräytyksellä: ${winnings}`;
 }
-
+/* KOODAUKSEN APUNA
 function updateRounds() {
   document.getElementById('rounds').textContent = `Kierroslaskenta: ${currentRound} `;
 }
@@ -148,3 +150,4 @@ function updateRounds() {
 function updateLockedrounds() {
   document.getElementById('lockedrounds').textContent = `Lukitut kierrokset: ${lockedRound} `;
 }
+*/
