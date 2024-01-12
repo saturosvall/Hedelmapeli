@@ -7,12 +7,17 @@
   <title>ELÄINPELI</title>
 </head>
 <body>
+  
   <div class="slot-machine">
+    <header>
+      <h1>ELÄINPELI</h1>
+    </header>
     <div class="reels-container">
-      <button id="lock1" onclick="toggleLock(1)">Lukitse 1</button>
-      <button id="lock2" onclick="toggleLock(2)">Lukitse 2</button>
-      <button id="lock3" onclick="toggleLock(3)">Lukitse 3</button>
-      <button id="lock4" onclick="toggleLock(4)">Lukitse 4</button>
+      
+      <button id="lock1" onclick="toggleLock(1)">LUKITSE</button>
+      <button id="lock2" onclick="toggleLock(2)">LUKITSE</button>
+      <button id="lock3" onclick="toggleLock(3)">LUKITSE</button>
+      <button id="lock4" onclick="toggleLock(4)">LUKITSE </button>
     </div>
     <div class="reels-container">
       <div class="reel" id="reel1">🐾</div>
@@ -21,18 +26,17 @@
       <div class="reel" id="reel4">🐾</div>
     </div>
     <div class="bet-container">
-      <label for="betInput">Panos:</label>
+      <label for="betInput">ASETA PANOS</label><BR>
       <input type="number" id="betInput" min="1" value="1">
     </div>
     <button onclick="spin()">Pyöräytä</button>
-    <p id="winnings">Voitot: 0 </p>
-    <p id="balance">Saldo: 100 </p>
-    <p id="rounds">Kierroslaskenta: 0 </p>
-    <p id="lockedrounds">Lukitut kierrokset: 0</p>
+    <p id="winnings">VOITTOJEN SEURANTA </p>
+    <p id="balance">SALDO: 100 </p>
+    <p id="rounds"></p>
+    <p id="lockedrounds"></p> 
     <div class="info">
-    <p id="instructions"> Voittotaulukko </p>
+    <h3> VOITTORIVIT</h3>
     <table>
-      
       <tr>
         <td>🌈🌈🌈🌈</td>
         <td>10 x panos</td>
