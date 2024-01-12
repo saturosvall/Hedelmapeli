@@ -1,6 +1,6 @@
 body {
   color: beige;
-  display: flex;
+  display: auto;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -102,4 +102,13 @@ button {
 th, td {
   padding: 8px;
   text-align: left;
+}
+@media only screen and (max-width: 600px) {
+  .reels-container {
+    flex-direction: auto;
+  }
+
+  .reel {
+    width: 100%;
+  }
 }
